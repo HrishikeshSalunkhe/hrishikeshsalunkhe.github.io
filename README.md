@@ -83,6 +83,16 @@ The built files will be in the `dist` directory.
 4. Set publish directory: `dist`
 5. Deploy!
 
+### GitHub Pages
+
+1. Push your code to GitHub
+2. Go to your repository Settings → Pages
+3. Under "Source", select "GitHub Actions"
+4. The GitHub Actions workflow will automatically build and deploy your site on every push to the `main` branch
+5. Your site will be available at `https://[username].github.io/portfolio-website/`
+
+**Note:** If your repository name is different from `portfolio-website`, update the `base` path in `vite.config.js` to match your repository name.
+
 ## 🎨 Customization
 
 ### Update Personal Information
