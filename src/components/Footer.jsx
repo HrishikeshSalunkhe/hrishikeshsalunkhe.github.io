@@ -27,7 +27,7 @@ const Footer = () => {
               Hrishikesh Salunkhe
             </h3>
             <p className="text-gray-400 text-sm">
-              Associate Software Engineer with 3+ years of experience building scalable web applications.
+              Software Engineer with 3+ years of experience building scalable web applications.
             </p>
           </div>
 

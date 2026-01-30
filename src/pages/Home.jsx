@@ -21,11 +21,11 @@ const Home = () => {
           </h1>
           
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">
-            Associate Software Engineer
+            Software Engineer
           </h2>
           
           <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Passionate Associate Software Engineer with 3+ years of experience building scalable web applications 
+            Passionate Software Engineer with 3+ years of experience building scalable web applications 
             using React JS, JavaScript, Node JS, MySQL, HTML, and CSS. Skilled in designing user-friendly front-end 
             interfaces and developing efficient back-end systems.
           </p>

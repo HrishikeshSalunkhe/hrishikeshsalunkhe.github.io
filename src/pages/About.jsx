@@ -22,26 +22,18 @@ const About = () => {
 
           <div className="glass p-8 mb-12 animate-fade-in-up">
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              I'm a passionate Associate Software Engineer with 3+ years of experience in building
-              scalable web applications using React JS, JavaScript, Node JS, MySQL, HTML, and CSS. 
-              My journey in software development has been driven by a curiosity to understand how things
-              work and a commitment to writing clean, maintainable code.
+              I’m a Software Engineer with 3+ years of experience building scalable web applications using React, JavaScript, Node.js, and MySQL. At Tricog Health, I progressed from Associate Software Engineer to Software Engineer in January 2026, taking on greater ownership in designing, developing, and maintaining production-grade systems.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              I specialize in full-stack development, with expertise in designing user-friendly front-end 
-              interfaces and developing efficient back-end systems. I enjoy working in collaborative 
-              environments where I can contribute to meaningful projects while continuously learning and 
-              growing as a developer.
+              I specialize in full-stack development, crafting intuitive front-end interfaces and developing efficient, reliable back-end services. My work focuses on writing clean, maintainable code and building systems that are easy to scale and operate.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              I'm enthusiastic about solving complex problems, collaborating with teams, and continuously 
-              learning new technologies. Currently, I'm exploring Kubernetes and Docker to enhance my 
-              DevOps skills and improve application deployment processes.
+              I enjoy solving complex engineering problems, collaborating across teams, and turning real-world requirements into simple, effective technical solutions. I’m currently exploring Docker and Kubernetes to strengthen my understanding of deployment and system reliability.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed">
-              My interests include scalable backend system architecture, database performance tuning, and 
-              designing intuitive and user-friendly experiences.
+              My interests lie in backend system architecture, database performance optimization, and creating seamless user experiences through thoughtful engineering.
             </p>
+
           </div>
 
           <div className="mb-12">

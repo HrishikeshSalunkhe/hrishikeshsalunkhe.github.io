@@ -2,18 +2,31 @@ export const experience = [
   {
     id: 1,
     company: 'Tricog Health India Pvt Ltd, Bengaluru',
-    role: 'Associate Software Engineer',
-    duration: 'Dec 2022 - Present',
+    role: 'Software Engineer',
+    duration: 'Jan 2026 - Present',
     achievements: [
-      'Developed and maintained web applications using React JS, Node JS, and MySQL, adhering to clean code principles to ensure functionality, performance, and scalability',
-      'Collaborated with cross-functional teams, including designers and QA, to deliver high-quality features, improving user satisfaction',
-      'Optimized slow database queries, enhancing query performance and reducing load times',
-      'Monitored and resolved production errors through in-depth Root Cause Analysis (RCA), improving application reliability',
-      'Authored unit tests to ensure robust and error-free code, reducing production bugs',
+      'Promoted from Associate Software Engineer for consistent delivery and increased technical ownership',
+      'Leading design and development of scalable, production-grade web systems',
+      'Collaborating with cross-functional teams to translate complex requirements into reliable features',
+      'Owning production reliability through proactive monitoring, debugging, and RCA',
     ],
   },
   {
     id: 2,
+    company: 'Tricog Health India Pvt Ltd, Bengaluru',
+    role: 'Associate Software Engineer',
+    duration: 'Dec 2022 - Jan 2025',
+    achievements: [
+      'Developed and maintained full-stack features with focus on performance and scalability',
+      'Worked closely with design and QA teams to deliver high-quality user experiences',
+      'Optimized database queries and improved application response times',
+      'Resolved production issues through detailed Root Cause Analysis',
+      'Wrote unit tests to improve code reliability and reduce production defects',
+    ],
+  },
+
+  {
+    id: 3,
     company: 'Newton School, Virtual',
     role: 'Full Stack Developer Boot Camp',
     duration: 'Dec 2021 - Dec 2022',
