@@ -1,6 +1,8 @@
 import { useEffect, useState, useMemo } from "react";
-import { FaCalendarAlt, FaExternalLinkAlt, FaTimes, FaCode, FaPalette, FaGitAlt, FaLinux, FaBookOpen, FaSpinner } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaCalendarAlt, FaExternalLinkAlt, FaTimes, FaCode, FaPalette, FaGitAlt, FaLinux, FaBookOpen, FaSpinner, FaGlobe } from 'react-icons/fa';
 import { SiHashnode } from 'react-icons/si';
+import { getLocalPostsForListing, getLocalPostBySlug } from '../data/localBlogPosts';
 
 const HASHNODE_API = "https://gql.hashnode.com";
 const BLOG_HOST = "hrishikeshsalunkhe.hashnode.dev";
@@ -16,6 +18,9 @@ const Blog = () => {
 
   // Categorize posts based on URL
   const categorizePost = (url) => {
+    if (typeof url === 'string' && url.startsWith('internal://local/')) {
+      return 'web';
+    }
     const urlLower = url.toLowerCase();
     if (urlLower.includes('javascript') || urlLower.includes('es6') || urlLower.includes('clock') || urlLower.includes('stopwatch')) {
       return 'nodejs-javascript';
@@ -74,8 +79,13 @@ const Blog = () => {
           throw new Error(json.errors[0].message);
         }
 
-        // Map and deduplicate posts by URL
+        // Map and deduplicate posts by URL (in-site posts listed first)
         const postsMap = new Map();
+        getLocalPostsForListing().forEach((node) => {
+          if (node.url && !postsMap.has(node.url)) {
+            postsMap.set(node.url, node);
+          }
+        });
         json.data.publication.posts.edges.forEach(({ node }) => {
           if (node.url && !postsMap.has(node.url)) {
             postsMap.set(node.url, {
@@ -99,6 +109,9 @@ const Blog = () => {
 
   // Extract slug from URL
   const extractSlugFromUrl = (url) => {
+    if (typeof url === 'string' && url.startsWith('internal://local/')) {
+      return url.slice('internal://local/'.length);
+    }
     try {
       const urlObj = new URL(url);
       const pathParts = urlObj.pathname.split('/').filter(Boolean);
@@ -117,6 +130,26 @@ const Blog = () => {
     const slug = extractSlugFromUrl(post.url);
     if (!slug) {
       setContentError('Unable to extract post slug from URL');
+      setContentLoading(false);
+      return;
+    }
+
+    if (post.isLocal) {
+      const local = getLocalPostBySlug(slug);
+      if (local) {
+        setPostContent({
+          title: local.title,
+          brief: local.brief,
+          content: { html: local.contentHtml },
+          publishedAt: local.publishedAt,
+          readTimeInMinutes: local.readTimeInMinutes,
+          tags: local.tags,
+          url: post.url,
+          isLocal: true,
+        });
+      } else {
+        setContentError('Post not found');
+      }
       setContentLoading(false);
       return;
     }
@@ -196,6 +229,11 @@ const Blog = () => {
       icon: FaCode,
       color: 'text-yellow-400',
     },
+    'web': {
+      name: 'Web',
+      icon: FaGlobe,
+      color: 'text-sky-400',
+    },
     'web-design': {
       name: 'Web Design',
       icon: FaPalette,
@@ -230,7 +268,7 @@ const Blog = () => {
       organized[category].push(post);
     });
 
-    return ['nodejs-javascript', 'web-design', 'devops-git', 'linux-ubuntu', 'remaining']
+    return ['nodejs-javascript', 'web', 'web-design', 'devops-git', 'linux-ubuntu', 'remaining']
       .map(key => ({
         key,
         ...categoryConfig[key],
@@ -369,7 +407,11 @@ const Blog = () => {
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
                 <div className="flex items-center space-x-3 flex-1">
-                  <SiHashnode className="text-blue-500 text-2xl flex-shrink-0" />
+                  {selectedPost.isLocal ? (
+                    <FaGlobe className="text-sky-400 text-2xl flex-shrink-0" />
+                  ) : (
+                    <SiHashnode className="text-blue-500 text-2xl flex-shrink-0" />
+                  )}
                   <h2 className="text-2xl font-bold text-gray-100 pr-4">
                     {selectedPost.title}
                   </h2>
@@ -457,15 +499,21 @@ const Blog = () => {
 
                     {/* Article Content Preview */}
                     {postContent.content?.html && (
-                      <div className="prose prose-invert prose-lg max-w-none">
+                      <div
+                        className={`prose prose-invert prose-lg max-w-none blog-content-preview ${
+                          postContent.isLocal ? 'blog-content-preview--rich' : ''
+                        }`}
+                      >
                         <div
-                          className="text-gray-300 leading-relaxed blog-content-preview"
+                          className="text-gray-300 leading-relaxed"
                           dangerouslySetInnerHTML={{
-                            __html: postContent.content.html.substring(0, 2000) + 
-                            (postContent.content.html.length > 2000 ? '...' : '')
+                            __html: postContent.isLocal
+                              ? postContent.content.html
+                              : postContent.content.html.substring(0, 2000) +
+                                (postContent.content.html.length > 2000 ? '...' : ''),
                           }}
                         />
-                        {postContent.content.html.length > 2000 && (
+                        {!postContent.isLocal && postContent.content.html.length > 2000 && (
                           <div className="mt-4 p-4 bg-gray-800/50 rounded-lg border border-gray-700/50">
                             <p className="text-gray-400 text-sm text-center">
                               This is a preview. Read the full article on Hashnode for complete content.
@@ -475,11 +523,17 @@ const Blog = () => {
                       </div>
                     )}
 
-                    {/* Hashnode Branding */}
-                    <div className="flex items-center space-x-2 text-gray-500 text-sm pt-4 border-t border-gray-700/50">
-                      <SiHashnode className="text-blue-500" />
-                      <span>Published on Hashnode</span>
-                    </div>
+                    {postContent.isLocal ? (
+                      <div className="flex items-center space-x-2 text-gray-500 text-sm pt-4 border-t border-gray-700/50">
+                        <FaGlobe className="text-sky-400" />
+                        <span>On this site</span>
+                      </div>
+                    ) : (
+                      <div className="flex items-center space-x-2 text-gray-500 text-sm pt-4 border-t border-gray-700/50">
+                        <SiHashnode className="text-blue-500" />
+                        <span>Published on Hashnode</span>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -496,17 +550,28 @@ const Blog = () => {
                   <span>View All Posts</span>
                   <FaExternalLinkAlt size={10} />
                 </a>
-                <a
-                  href={selectedPost.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center space-x-2"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <FaBookOpen />
-                  <span>Read Full Article on Hashnode</span>
-                  <FaExternalLinkAlt size={12} />
-                </a>
+                {selectedPost.isLocal ? (
+                  <Link
+                    to={`/blog/${extractSlugFromUrl(selectedPost.url)}`}
+                    className="btn-primary inline-flex items-center space-x-2"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <FaBookOpen />
+                    <span>Read full article</span>
+                  </Link>
+                ) : (
+                  <a
+                    href={selectedPost.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary inline-flex items-center space-x-2"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <FaBookOpen />
+                    <span>Read Full Article on Hashnode</span>
+                    <FaExternalLinkAlt size={12} />
+                  </a>
+                )}
               </div>
             </div>
           </div>

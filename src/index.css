@@ -140,3 +140,106 @@
 .blog-content-preview em {
   @apply italic;
 }
+
+/* Long-form local articles: spacing, sections, diagrams */
+.blog-content-preview--rich h2 {
+  @apply scroll-mt-28 mt-10 pt-8 border-t border-gray-700/50;
+}
+
+.blog-content-preview--rich h2:first-of-type {
+  @apply mt-0 pt-0 border-t-0;
+}
+
+.blog-content-preview--rich h3 {
+  @apply mt-8 mb-3 text-gray-100;
+}
+
+.blog-content-preview hr {
+  @apply my-10 border-0 h-px bg-gradient-to-r from-transparent via-gray-500/50 to-transparent;
+}
+
+.blog-content-preview--rich hr {
+  @apply my-12;
+}
+
+.blog-content-preview table {
+  @apply w-full text-sm rounded-lg overflow-hidden border border-gray-600/40 my-6;
+}
+
+.blog-content-preview thead {
+  @apply bg-gray-800/70;
+}
+
+.blog-content-preview th {
+  @apply text-left p-3 font-semibold text-gray-200;
+}
+
+.blog-content-preview td {
+  @apply p-3 border-t border-gray-600/30;
+}
+
+.blog-content-preview .article-part-header {
+  @apply flex items-center gap-4 my-10;
+}
+
+.blog-content-preview .article-part-header .article-part-line {
+  @apply h-px flex-1 bg-gradient-to-r from-transparent via-sky-500/40 to-sky-500/30;
+}
+
+.blog-content-preview .article-part-header .article-part-line:last-child {
+  @apply bg-gradient-to-l from-transparent via-sky-500/40 to-sky-500/30;
+}
+
+.blog-content-preview .article-part-label {
+  @apply text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-sky-400/95 whitespace-nowrap px-1;
+}
+
+.blog-content-preview .article-callout {
+  @apply border border-primary-500/30 bg-gradient-to-br from-primary-500/10 to-transparent rounded-xl p-5 sm:p-6 my-8 shadow-inner;
+}
+
+.blog-content-preview .article-callout-title {
+  @apply text-xs font-bold uppercase tracking-wider text-primary-400 mb-3;
+}
+
+.blog-content-preview .article-callout p:last-child {
+  @apply mb-0;
+}
+
+.blog-content-preview .article-callout table {
+  @apply w-full border-collapse my-0 rounded-lg overflow-hidden;
+}
+
+.blog-content-preview .article-callout th,
+.blog-content-preview .article-callout td {
+  @apply border border-gray-600/40 p-2 text-left text-xs sm:text-sm;
+}
+
+.blog-content-preview .article-flow-diagram {
+  @apply font-mono text-xs sm:text-sm leading-relaxed text-gray-300 bg-gray-900/80 border border-gray-600/50 rounded-xl p-4 sm:p-5 my-8 overflow-x-auto shadow-inner;
+}
+
+.blog-content-preview .article-flow-diagram code {
+  @apply bg-transparent p-0 text-inherit;
+}
+
+.blog-content-preview .article-key-point {
+  @apply flex gap-3 my-6 p-4 rounded-lg border-l-4 border-amber-500/60 bg-amber-500/5;
+}
+
+.blog-content-preview .article-key-point-icon {
+  @apply text-amber-400 text-lg flex-shrink-0 leading-none;
+}
+
+.blog-content-preview .article-bullet-grid {
+  @apply grid gap-3 sm:grid-cols-2 list-none ml-0 my-6 p-0;
+}
+
+.blog-content-preview .article-bullet-grid li {
+  @apply mb-0 flex items-start gap-2 p-3 rounded-lg bg-gray-800/40 border border-gray-700/50 text-sm leading-snug;
+}
+
+.blog-content-preview .article-bullet-grid li::before {
+  content: '▸';
+  @apply text-primary-400 flex-shrink-0 font-bold;
+}
