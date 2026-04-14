@@ -5,10 +5,10 @@ export const experience = [
     role: 'Software Engineer',
     duration: 'Jan 2026 - Present',
     achievements: [
-      'Promoted from Associate Software Engineer for consistent delivery and increased technical ownership',
-      'Leading design and development of scalable, production-grade web systems',
-      'Collaborating with cross-functional teams to translate complex requirements into reliable features',
-      'Owning production reliability through proactive monitoring, debugging, and RCA',
+      'Promoted to Software Engineer for consistent delivery, technical ownership, and contribution to production systems',
+      'Designed and enhanced features in a scalable microservices-based web application using React.js, Node.js, and MySQL',
+      'Took ownership of production reliability through monitoring, debugging, and Root Cause Analysis (RCA)',
+      'Collaborated with cross-functional teams including product, design, and QA to deliver reliable and scalable features',
     ],
   },
   {
@@ -17,23 +17,22 @@ export const experience = [
     role: 'Associate Software Engineer',
     duration: 'Dec 2022 - Jan 2025',
     achievements: [
-      'Developed and maintained full-stack features with focus on performance and scalability',
-      'Worked closely with design and QA teams to deliver high-quality user experiences',
-      'Optimized database queries and improved application response times',
-      'Resolved production issues through detailed Root Cause Analysis',
-      'Wrote unit tests to improve code reliability and reduce production defects',
+      'Developed and maintained full-stack features in a microservices-based architecture with focus on performance and scalability',
+      'Optimized MySQL database queries using execution plans, improving API response times for critical workflows',
+      'Monitored production systems using Grafana and Slack alerts, and resolved incidents through detailed Root Cause Analysis (RCA)',
+      'Implemented unit tests with edge-case coverage, improving code quality and reducing production defects',
+      'Worked in cloud-native environment using AWS (S3, SNS, SQS, Cognito) and supported Kubernetes-based deployments with DevOps team',
     ],
   },
-
   {
     id: 3,
     company: 'Newton School, Virtual',
-    role: 'Full Stack Developer Boot Camp',
+    role: 'Full Stack Developer Bootcamp',
     duration: 'Dec 2021 - Dec 2022',
     achievements: [
-      'Full Stack Developer training on MERN Stack',
-      'Skills: React JS, JavaScript, CSS, HTML, Data Structures, Java, Git',
-      'Developed and deployed front-end applications using above mentioned Tech Stacks on Netlify',
+      'Completed full-stack development training focused on MERN stack and software engineering fundamentals',
+      'Built and deployed frontend applications using React.js and JavaScript, hosted on Netlify',
+      'Developed strong foundation in JavaScript, Data Structures, HTML, CSS, and Git',
     ],
   }
 ];

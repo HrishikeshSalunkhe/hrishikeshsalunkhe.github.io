@@ -22,18 +22,14 @@ const About = () => {
 
           <div className="glass p-8 mb-12 animate-fade-in-up">
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              I’m a Software Engineer with 3+ years of experience building scalable web applications using React, JavaScript, Node.js, and MySQL. At Tricog Health, I progressed from Associate Software Engineer to Software Engineer in January 2026, taking on greater ownership in designing, developing, and maintaining production-grade systems.
+            Software Engineer with 3+ years of experience building and enhancing scalable microservices-based web applications using React.js, Node.js, and MySQL. At Tricog Health, I progressed from Associate Software Engineer to Software Engineer, taking on increased ownership of production systems, feature development, and system reliability.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              I specialize in full-stack development, crafting intuitive front-end interfaces and developing efficient, reliable back-end services. My work focuses on writing clean, maintainable code and building systems that are easy to scale and operate.
+            I specialize in backend performance optimization, database tuning, and building scalable, production-grade systems. My experience includes improving system reliability through production monitoring, Root Cause Analysis (RCA), and working with event-driven and microservices-based architectures. I also focus on enhancing front-end performance using techniques like debouncing, optimized search flows, and loading states.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              I enjoy solving complex engineering problems, collaborating across teams, and turning real-world requirements into simple, effective technical solutions. I’m currently exploring Docker and Kubernetes to strengthen my understanding of deployment and system reliability.
+            I have hands-on experience with AWS services and Kubernetes for cloud-native, containerized deployments, along with strong exposure to REST APIs, unit testing, and distributed system design. I enjoy solving complex engineering problems, collaborating across teams, and delivering clean, maintainable, and scalable software solutions.
             </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
-              My interests lie in backend system architecture, database performance optimization, and creating seamless user experiences through thoughtful engineering.
-            </p>
-
           </div>
 
           <div className="mb-12">

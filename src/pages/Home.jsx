@@ -25,9 +25,7 @@ const Home = () => {
           </h2>
           
           <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-            Passionate Software Engineer with 3+ years of experience building scalable web applications 
-            using React JS, JavaScript, Node JS, MySQL, HTML, and CSS. Skilled in designing user-friendly front-end 
-            interfaces and developing efficient back-end systems.
+          Software Engineer with 3+ years of experience building scalable full-stack applications using React.js, Node.js, and MySQL. Strong in backend systems, database optimization, and production debugging (RCA), with a focus on building reliable and high-performance web applications.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
